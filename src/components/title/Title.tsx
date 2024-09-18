@@ -12,8 +12,14 @@ const TitleStyles = styled.h1`
 
 type TitleProps = {
   children: ReactNode;
+  className?: string;
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 };
 
-export function Title({ children }: TitleProps) {
-  return <TitleStyles>{children}</TitleStyles>;
+export function Title({ children, as = 'h1', className }: TitleProps) {
+  return (
+    <TitleStyles as={as} className={className}>
+      {children}
+    </TitleStyles>
+  );
 }

@@ -1,12 +1,8 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
-import { Container } from '../container/Container';
+import { ContainerStyles } from '../container/Container.styles';
 
-const TableStyles = styled(Container)`
-  display: flex;
-
-  flex-direction: column;
-
+const TableStyles = styled(ContainerStyles)`
   max-height: 944px;
 
   background: ${({ theme }) => theme.light.colorBackground.white};
@@ -17,8 +13,9 @@ const TableStyles = styled(Container)`
 
 type TableProps = {
   children?: ReactNode;
+  className?: string;
 };
 
-export function Table({ children }: TableProps) {
-  return <TableStyles>{children}</TableStyles>;
+export function Table({ children, className }: TableProps) {
+  return <TableStyles className={className}>{children}</TableStyles>;
 }

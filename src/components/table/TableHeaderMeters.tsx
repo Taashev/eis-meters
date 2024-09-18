@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+
+import { TableMetersItemStyles } from '../table-meters-item/TableMetersItem.styles';
 import { TableCell } from './TableCell';
-import { TableItemMeterStyles } from './TableItemMeter';
 
 const TableHeaderMetersStyles = styled.header`
   padding: 0 ${({ theme }) => `calc(${theme.unit.unitX1} * .5)`};
@@ -18,7 +19,7 @@ const TableHeaderMetersStyles = styled.header`
 export function TableHeaderMeters() {
   return (
     <TableHeaderMetersStyles>
-      <TableItemMeterStyles>
+      <TableMetersItemStyles>
         <TableCell>№</TableCell>
         <TableCell>Тип</TableCell>
         <TableCell>Дата установки</TableCell>
@@ -26,7 +27,7 @@ export function TableHeaderMeters() {
         <TableCell>Текущие показания</TableCell>
         <TableCell>Адрес</TableCell>
         <TableCell>Примечание</TableCell>
-      </TableItemMeterStyles>
+      </TableMetersItemStyles>
     </TableHeaderMetersStyles>
   );
 }

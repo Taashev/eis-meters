@@ -30,10 +30,10 @@ export const DeleteButtonStyles = styled.button`
   }
 
   &:active {
-    background: #f2f5f8;
+    background: ${({ theme }) => theme.light.colorForeground.pink};
   }
   &:active svg {
-    color: #9da6b4;
+    color: #c53030;
   }
 
   &:disabled {
