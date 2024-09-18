@@ -8,7 +8,7 @@ export type MeterType = {
   communication: string;
   description: string;
   serial_number: string;
-  installation_date: Date;
+  installation_date: string;
   brand_name: null;
   model_name: null;
   initial_values: Array<number>;

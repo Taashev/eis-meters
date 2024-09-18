@@ -1,8 +1,7 @@
-import { ThemeType } from '../types/theme';
+import { LightThemeType } from '../types/theme';
 import { colors } from './colors';
-import { unit } from './unit';
 
-export const light: ThemeType = {
+export const light: LightThemeType = {
   colors,
   colorText: {
     primary: colors.black,
@@ -20,5 +19,4 @@ export const light: ThemeType = {
     pink: colors.pink,
     darkPink: colors.darkPink,
   },
-  unit,
 };

@@ -28,17 +28,24 @@ type ColorForeground = {
   darkPink: string;
 };
 
-type Unit = {
-  unitX1: number;
-  unitX2: number;
-  unitX3: number;
-  unitX4: number;
+export type Unit = {
+  unitX1: string;
+  unitX2: string;
+  unitX3: string;
+  unitX4: string;
 };
 
-export type ThemeType = {
+export type LightThemeType = {
   colors: Colors;
   colorText: ColorText;
   colorBackground: ColorBackground;
   colorForeground: ColorForeground;
+  unit?: Partial<Unit>;
+};
+
+export type ThemeType = {
+  light: LightThemeType;
+  maxWidth: number;
+  minWidth: number;
   unit: Unit;
 };

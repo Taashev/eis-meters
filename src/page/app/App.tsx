@@ -3,6 +3,7 @@ import { GlobalStyle } from '../../components/global-style/GlobalStyle';
 import { theme } from '../../theme/theme';
 import { getAddresses, getMeters } from '../../utils/api';
 import { LIMIT } from '../../utils/constants';
+import { Main } from '../main/Main';
 import { AppStyles } from './App.styles';
 
 function App() {
@@ -17,7 +18,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <AppStyles></AppStyles>
+      <AppStyles>
+        <Main />
+      </AppStyles>
     </ThemeProvider>
   );
 }
