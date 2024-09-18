@@ -24,7 +24,12 @@ type TableItemProps = {
   as?: keyof JSX.IntrinsicElements; // Типизируем, чтобы передавать валидные HTML теги
 } & DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
-export function TableMetersItem({ index, data, ...props }: TableItemProps) {
+export function TableMetersItem({
+  index,
+  data,
+  ref,
+  ...props
+}: TableItemProps) {
   const typeMeter = getTypeMeter(data._type);
 
   const getIcon = function (type: string) {
@@ -55,9 +60,9 @@ export function TableMetersItem({ index, data, ...props }: TableItemProps) {
 
   return (
     <TableMetersItemStyles
-      {...props}
       tabIndex={1}
       aria-label={getArialLabelMeterDescription(typeMeter)}
+      {...props}
     >
       <TableCell body>{index}</TableCell>
       <TableCell className="meter-type" body>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TableMetersItemStyles = styled.div`
+export const TableMetersItemTemplateStyles = styled.div`
   display: grid;
 
   grid-template-columns:
@@ -11,7 +11,9 @@ export const TableMetersItemStyles = styled.div`
     minmax(150px, 376px);
 
   align-items: center;
+`;
 
+export const TableMetersItemStyles = styled(TableMetersItemTemplateStyles)`
   border-bottom: 1px solid #e0e5eb;
 
   transition: 0.1s;
