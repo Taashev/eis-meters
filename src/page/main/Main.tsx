@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { ContainerStyles } from '../../components/container/Container.styles';
-import { MetersSection } from '../meters-section/MetersSection';
+import { MetersSection } from '../../components/layout/meters-section/MetersSection';
+import { ContainerStyles } from '../../components/UI/container/Container.styles';
 
 const MainStyles = styled(ContainerStyles)`
   flex-grow: 1;

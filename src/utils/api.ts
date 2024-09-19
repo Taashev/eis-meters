@@ -1,20 +1,6 @@
-import { AddressType } from '../types/address';
-import { MeterType } from '../types/meter';
+import { ResponseAddressType } from '../types/address';
+import { ResponseMeterType } from '../types/meter';
 import { BASE_URL, LIMIT } from './constants';
-
-type ResponseMeterType = {
-  count: number;
-  next: string;
-  previous: string;
-  results: Array<MeterType>;
-};
-
-type ResponseAddressType = {
-  count: number;
-  next: string;
-  previous: string;
-  results: Array<AddressType>;
-};
 
 async function checkResponse(response: Response) {
   const contentType = response.headers.get('Content-Type');

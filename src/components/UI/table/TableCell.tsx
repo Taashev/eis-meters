@@ -4,6 +4,8 @@ import styled from 'styled-components';
 const TableCellStyles = styled.div`
   padding: 8px 12px;
 
+  box-sizing: border-box;
+
   &:nth-child(1) {
     text-align: center;
   }

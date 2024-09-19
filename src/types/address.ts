@@ -11,3 +11,10 @@ export type AddressType = {
     fias_addrobjs: Array<string>;
   };
 };
+
+export type ResponseAddressType = {
+  count: number;
+  next: string;
+  previous: string;
+  results: Array<AddressType>;
+};

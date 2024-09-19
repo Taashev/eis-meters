@@ -4,12 +4,19 @@ export type MeterType = {
   area: {
     id: string;
   };
-  is_automatic: null;
+  is_automatic: boolean | null;
   communication: string;
   description: string;
   serial_number: string;
   installation_date: string;
-  brand_name: null;
-  model_name: null;
+  brand_name: string | null;
+  model_name: string | null;
   initial_values: Array<number>;
+};
+
+export type ResponseMeterType = {
+  count: number;
+  next: string | null;
+  previous: string;
+  results: Array<MeterType>;
 };

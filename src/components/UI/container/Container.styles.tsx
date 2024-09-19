@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { LARGE_WIDTH, MEDIUM_WIDTH, SMALL_WIDTH } from '../../utils/constants';
+import { LARGE_WIDTH, MEDIUM_WIDTH, SMALL_WIDTH } from '../../../utils/constants';
 import { ContainerProps } from './Container.types';
 
 function getContainerWidth(size: string | undefined) {

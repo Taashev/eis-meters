@@ -1,6 +1,6 @@
 import { DetailedHTMLProps } from 'react';
 import styled from 'styled-components';
-import { ReactComponent as Trash } from '../../images/trash.svg';
+import { ReactComponent as Trash } from '../../../images/trash.svg';
 import { DeleteButtonStyles } from './DeleteButton.styles';
 
 const TrashIconStyles = styled(Trash)`

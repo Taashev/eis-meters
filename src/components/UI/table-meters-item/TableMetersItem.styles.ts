@@ -11,6 +11,8 @@ export const TableMetersItemTemplateStyles = styled.div`
     minmax(150px, 376px);
 
   align-items: center;
+
+  box-sizing: border-box;
 `;
 
 export const TableMetersItemStyles = styled(TableMetersItemTemplateStyles)`

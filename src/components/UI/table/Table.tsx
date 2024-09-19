@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { ContainerStyles } from '../container/Container.styles';
 
 const TableStyles = styled(ContainerStyles)`
-  max-height: 944px;
-
   background: ${({ theme }) => theme.light.colorBackground.white};
 
   border: 1px solid #e0e5eb;

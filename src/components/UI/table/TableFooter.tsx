@@ -9,6 +9,8 @@ const TableFooterStyles = styled.footer`
   padding: ${({ theme }) => theme.unit.unitX2};
 
   border-top: 1px solid #e0e5eb;
+
+  box-sizing: border-box;
 `;
 
 type TableFooterProps = {

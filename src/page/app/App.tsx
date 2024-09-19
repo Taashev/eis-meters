@@ -1,28 +1,26 @@
+import { observer } from 'mobx-react-lite';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../../components/global-style/GlobalStyle';
+import { useStore } from '../../store/StoreContext';
 import { theme } from '../../theme/theme';
-import { getAddresses, getMeters } from '../../utils/api';
-import { LIMIT } from '../../utils/constants';
+import { OFFSET } from '../../utils/constants';
 import { Main } from '../main/Main';
 import { AppStyles } from './App.styles';
 
-function App() {
-  async function handleGetMeters(offset: number, limit: number = LIMIT) {
-    return await getMeters(offset, limit);
-  }
+const App = observer(function () {
+  const { metersStore } = useStore();
 
-  async function handleGetAddress(queryAddressIds: string) {
-    return await getAddresses(queryAddressIds);
-  }
+  metersStore.fetchGetMeters(OFFSET);
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+
       <AppStyles>
         <Main />
       </AppStyles>
     </ThemeProvider>
   );
-}
+});
 
 export default App;
