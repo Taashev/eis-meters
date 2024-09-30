@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/eis-meters/static/css/main.1cb6c376.css",
-    "main.js": "/eis-meters/static/js/main.a2f9afb0.js",
+    "main.js": "/eis-meters/static/js/main.83796b6e.js",
     "static/media/Roboto-Medium.ttf": "/eis-meters/static/media/Roboto-Medium.e73e917f7bfa48666e00.ttf",
     "static/media/Roboto-Regular.ttf": "/eis-meters/static/media/Roboto-Regular.27f62b53b93858475a7f.ttf",
     "static/media/trash.svg": "/eis-meters/static/media/trash.1206b755eafc07f4a5b2c448487f5b33.svg",
     "static/media/drop.svg": "/eis-meters/static/media/drop.59333d03244bc3f81a15f09d08e1c37c.svg",
     "index.html": "/eis-meters/index.html",
     "main.1cb6c376.css.map": "/eis-meters/static/css/main.1cb6c376.css.map",
-    "main.a2f9afb0.js.map": "/eis-meters/static/js/main.a2f9afb0.js.map"
+    "main.83796b6e.js.map": "/eis-meters/static/js/main.83796b6e.js.map"
   },
   "entrypoints": [
     "static/css/main.1cb6c376.css",
-    "static/js/main.a2f9afb0.js"
+    "static/js/main.83796b6e.js"
   ]
 }
