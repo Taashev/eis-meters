@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import { StoreContext } from './context/StoreContext';
 import { rootStore } from './store/RootStore';
@@ -15,10 +15,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <StoreContext.Provider value={rootStore}>
         <App />
       </StoreContext.Provider>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );

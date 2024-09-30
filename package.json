@@ -2,6 +2,7 @@
   "name": "eis-meters",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://taashev.github.io/eis-meters/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -53,6 +54,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
+    "gh-pages": "^6.1.1",
     "prettier": "3.3.3",
     "prettier-plugin-organize-imports": "^4.0.0"
   }
