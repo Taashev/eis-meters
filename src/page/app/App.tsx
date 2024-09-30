@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from '../../components/globalStyle/GlobalStyle';
-import { theme } from '../../theme/theme';
+import { GlobalStyle } from '../../styles/globalStyle/GlobalStyle';
+import { theme } from '../../styles/theme/theme';
 import { MetersPage } from '../metersPage/MetersPage';
 import { NotFoundPage } from '../notFoundPage/NotFoundPage';
 import { AppStyles } from './App.styles';

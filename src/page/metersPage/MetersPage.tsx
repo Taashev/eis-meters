@@ -14,7 +14,6 @@ export const MetersPage = observer(function () {
   const { metersPaginationStore, metersStore, addressesStore } = useStore();
 
   useEffect(() => {
-    console.log(metersPaginationStore.offset)
     metersStore
       .fetchGetMeters(metersPaginationStore.offset)
       .then((response) => {
