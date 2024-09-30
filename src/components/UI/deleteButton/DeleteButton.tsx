@@ -1,14 +1,6 @@
 import { DetailedHTMLProps } from 'react';
-import styled from 'styled-components';
-import { ReactComponent as Trash } from '../../../images/trash.svg';
+import { TrashIcon } from '../trash-icon/TrashIcon';
 import { DeleteButtonStyles } from './DeleteButton.styles';
-
-const TrashIconStyles = styled(Trash)`
-  width: 16px;
-  height: 16px;
-
-  color: #c53030;
-`;
 
 type DeleteButtonProps = {
   onDelete: React.MouseEventHandler<HTMLButtonElement>;
@@ -30,7 +22,7 @@ export function DeleteButton({
       {...props}
       aria-label="Удалить"
     >
-      <TrashIconStyles />
+      <TrashIcon />
     </DeleteButtonStyles>
   );
 }

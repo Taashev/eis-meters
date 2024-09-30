@@ -1,106 +1,81 @@
 import { observer } from 'mobx-react-lite';
 import { DetailedHTMLProps } from 'react';
-import styled from 'styled-components';
-import { ReactComponent as Drop } from '../../../images/drop.svg';
+import { useStore } from '../../../hooks/useStore';
+import { AddressModelInstance } from '../../../store/AddressesStore';
 import { MeterModelInstance } from '../../../store/MetersStore';
-import { useStore } from '../../../store/StoreContext';
-import { getTypeMeter } from '../../../utils/getTypeMeter';
+import { parseAddressIds } from '../../../utils/parseAddressIds';
 import { DeleteButton } from '../deleteButton/DeleteButton';
+import { DropIcon } from '../drop-icon/DropIcon';
 import { TableCell } from '../table/TableCell';
 import { TableMetersItemStyles } from './TableMetersItem.styles';
 
-const DropIconStyles = styled(Drop)`
-  width: 16px;
-  height: 16px;
-
-  color: #3698fa;
-
-  &.hot {
-    color: #f46b4d;
-  }
-`;
-
 type TableItemProps = {
-  meter: MeterModelInstance;
   index: number;
+  meter: MeterModelInstance;
+  address: AddressModelInstance;
   as?: keyof JSX.IntrinsicElements; // Типизируем, чтобы передавать валидные HTML теги
 } & DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
 export const TableMetersItem = observer(function ({
   index,
   meter,
+  address,
   ref,
   ...props
 }: TableItemProps) {
-  const { metersStore } = useStore();
-
-  const typeMeter = getTypeMeter(meter._type);
+  const { metersStore, addressesStore, metersPaginationStore } = useStore();
 
   const getIcon = function (type: string) {
     switch (type) {
       case 'ColdWaterAreaMeter':
         return (
           <>
-            <DropIconStyles /> ХВС
+            <DropIcon /> ХВС
           </>
         );
       case 'HotWaterAreaMeter':
         return (
           <>
-            <DropIconStyles className="hot" /> ДВС
+            <DropIcon className="hot" /> ДВС
           </>
         );
     }
   };
 
-  function getArialLabelMeterDescription(type: string) {
-    switch (type) {
-      case 'ColdWaterAreaMeter':
-        return 'Счетчик холодной воды';
-      case 'HotWaterAreaMeter':
-        return 'Счетчик горячей воды';
-    }
-  }
-
-  function getValueIsAutomatic(value: boolean | null) {
-    switch (value) {
-      case false:
-        return 'нет';
-      case true:
-        return 'да';
-      default:
-        return '';
-    }
-  }
-
   async function handlerDeleteButton() {
     try {
       await metersStore.removeById(meter.id);
-      await metersStore.fetchGetMeters(19);
-    } catch (error) {
-      throw new Error('Ошибка при удалении счетчика');
+
+      const metersResponse = await metersStore.fetchGetMeters(
+        metersPaginationStore.offset
+      );
+
+      const addressIds = parseAddressIds(metersResponse.results);
+
+      await addressesStore.fetchGetAddress(addressIds);
+
+      metersPaginationStore.setTotalPages(metersResponse.count);
+
+      metersStore.updateMetersStore(metersResponse.results);
+    } catch (error: any) {
+      console.error(`Ошибка при удалении счетчика: ${error?.message}`);
     }
   }
 
   return (
-    <TableMetersItemStyles
-      tabIndex={1}
-      aria-label={getArialLabelMeterDescription(typeMeter)}
-      {...props}
-    >
+    <TableMetersItemStyles {...props}>
       <TableCell body>{index}</TableCell>
       <TableCell className="meter-type" body>
-        {getIcon(typeMeter)}
+        {getIcon(meter._type)}
       </TableCell>
       <TableCell body>{meter.installation_date}</TableCell>
-      <TableCell body>{getValueIsAutomatic(meter.is_automatic)}</TableCell>
-      <TableCell body>{meter.initial_values[0]}</TableCell>
+      <TableCell body>{meter.is_automatic}</TableCell>
+      <TableCell body>{meter.initial_values}</TableCell>
       <TableCell body>
-        г Санкт-Петербург, ул Тарасова, д. 0 корп. 0 лит. А, кв. 1
+        {address.house.address + `, ${address.str_number_full}`}
       </TableCell>
       <TableCell body>{meter.description}</TableCell>
       <DeleteButton
-        tabIndex={1}
         className="meter-button-delete"
         onDelete={handlerDeleteButton}
       />

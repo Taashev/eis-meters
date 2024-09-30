@@ -1,26 +1,24 @@
-import { observer } from 'mobx-react-lite';
+import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../../components/global-style/GlobalStyle';
-import { useStore } from '../../store/StoreContext';
 import { theme } from '../../theme/theme';
-import { OFFSET } from '../../utils/constants';
-import { Main } from '../main/Main';
+import { MetersPage } from '../meters-page/MetersPage';
+import { NotFoundPage } from '../not-found-page/NotFoundPage';
 import { AppStyles } from './App.styles';
 
-const App = observer(function () {
-  const { metersStore } = useStore();
-
-  metersStore.fetchGetMeters(OFFSET);
-
+function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
 
       <AppStyles>
-        <Main />
+        <Routes>
+          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/" element={<MetersPage />} />
+        </Routes>
       </AppStyles>
     </ThemeProvider>
   );
-});
+}
 
 export default App;

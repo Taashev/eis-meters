@@ -1,6 +1,7 @@
 import { ResponseAddressType } from '../types/address';
-import { ResponseMeterType } from '../types/meter';
-import { BASE_URL, LIMIT } from './constants';
+import { MetersApiResponseType } from '../types/meter';
+import { BASE_URL } from './constants';
+import { setQueryParams } from './setRequsetParams';
 
 async function checkResponse(response: Response) {
   const contentType = response.headers.get('Content-Type');
@@ -24,32 +25,29 @@ async function checkResponse(response: Response) {
   }
 }
 
-export async function getMeters(
-  offset: number,
-  limit: number = LIMIT
-): Promise<ResponseMeterType> {
-  return await fetch(
-    BASE_URL +
-      '/api/v4/test/meters/' +
-      '?' +
-      `limit=${limit}` +
-      `&offset=${offset}`
-  ).then(checkResponse);
+export async function apiGetMeters(
+  offset?: number,
+  limit?: number
+): Promise<MetersApiResponseType> {
+  let url = setQueryParams(BASE_URL + '/api/v4/test/meters/', {
+    offset,
+    limit,
+  });
+
+  return await fetch(url).then(checkResponse);
 }
 
-export async function getAddresses(
+export async function apiGetAddressByIds(
   queryAddressIds: string
 ): Promise<ResponseAddressType | null> {
-  if (queryAddressIds === '') {
-    return null;
-  }
+  const url = setQueryParams(BASE_URL + '/api/v4/test/areas/', [
+    queryAddressIds,
+  ]);
 
-  return await fetch(
-    BASE_URL + '/api/v4/test/areas/' + `?${queryAddressIds}`
-  ).then(checkResponse);
+  return await fetch(url).then(checkResponse);
 }
 
-export async function deleteMeters(id: string) {
+export async function apiDeleteMeters(id: string) {
   return await fetch(BASE_URL + `/api/v4/test/meters/${id}/`, {
     method: 'DELETE',
   }).then(checkResponse);

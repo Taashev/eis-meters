@@ -1,12 +1,20 @@
 import { AddressIdsType } from '../types/address';
-import { MeterType } from '../types/meter';
+import { MeterItemResponseType } from '../types/meter';
 
-export function parseAddressIds(meters: Array<MeterType>): AddressIdsType {
-  const addressIds = meters.map((meter) => {
-    return meter.area.id;
-  });
+export function parseAddressIds(
+  meters: Array<MeterItemResponseType>
+): AddressIdsType {
+  const addressIds: AddressIdsType = [];
 
-  const uniqueAddressIds = Array.from(new Set(addressIds));
+  for (let i = 0; i < meters.length; i++) {
+    const addressId = meters[i].area.id;
+
+    if (addressId) {
+      addressIds.push(addressId);
+    }
+  }
+
+  const uniqueAddressIds: AddressIdsType = Array.from(new Set(addressIds));
 
   return uniqueAddressIds;
 }

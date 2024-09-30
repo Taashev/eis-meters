@@ -14,6 +14,16 @@ const TableBodyStyles = styled.ul`
 
   overflow-y: scroll;
   overflow-x: hidden;
+
+  /* убираем полосу прокрутки */
+  overflow: scroll;
+  -ms-overflow-style: none; /* Для Internet Explorer и Edge */
+  scrollbar-width: none; /* для Firefox */
+
+  /* убираем полосу прокрутки для Webkit */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 type TableBodyProps = {

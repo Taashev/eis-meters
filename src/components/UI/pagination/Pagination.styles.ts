@@ -1,27 +1,21 @@
 import styled from 'styled-components';
 
-export const PaginationStyles = styled.div`
+export const PaginationListStyles = styled.ul`
   display: flex;
 
   gap: ${({ theme }) => theme.unit.unitX2};
-`;
+  margin: 0;
+  padding: 0;
 
-export const PaginationButtonStyles = styled.button`
-  padding: ${({ theme }) => theme.unit.unitX2}
-    ${({ theme }) => theme.unit.unitX3};
+  list-style: none;
 
-  background: #fff;
+  /* убираем полосу прокрутки */
+  overflow: scroll;
+  -ms-overflow-style: none; /* Для Internet Explorer и Edge */
+  scrollbar-width: none; /* для Firefox */
 
-  border: 1px solid #ced5de;
-  border-radius: 6px;
-
-  transition: 0.1s;
-
-  &:hover {
-    background: ${({ theme }) => theme.light.colorForeground.primary};
-
-    transition: 0.1s;
-
-    cursor: pointer;
+  /* убираем полосу прокрутки для Webkit */
+  &::-webkit-scrollbar {
+    display: none;
   }
 `;

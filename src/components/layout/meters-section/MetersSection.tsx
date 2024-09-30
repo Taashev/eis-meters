@@ -1,7 +1,9 @@
 import { observer } from 'mobx-react-lite';
+import Skeleton from 'react-loading-skeleton';
+import { useSearchParams } from 'react-router-dom';
 import { TableMetersHeader } from '../../../components/UI/table-meters-header/TableMetersHeader';
 import { Title } from '../../../components/UI/title/Title';
-import { useStore } from '../../../store/StoreContext';
+import { useStore } from '../../../hooks/useStore';
 import { Pagination } from '../../UI/pagination/Pagination';
 import { TableMetersItem } from '../../UI/table-meters-item/TableMetersItem';
 import { Table } from '../../UI/table/Table';
@@ -10,7 +12,26 @@ import { TableFooter } from '../../UI/table/TableFooter';
 import { MetersSectionStyles } from './MetersSection.styles';
 
 export const MetersSection = observer(function MetersSection() {
-  const { metersStore } = useStore();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { metersStore, addressesStore, metersPaginationStore } = useStore();
+
+  const { currentPageToString } = metersPaginationStore;
+
+  const addressesMap = new Map(
+    addressesStore.data.map((address) => [address.id, address])
+  );
+
+  async function handlerButtonPagination(
+    event: React.MouseEvent<HTMLButtonElement>
+  ) {
+    const buttonId = event.currentTarget.id;
+
+    if (buttonId === currentPageToString) {
+      return;
+    }
+
+    setSearchParams({ page: buttonId });
+  }
 
   return (
     <MetersSectionStyles as="section" padding={4}>
@@ -18,20 +39,36 @@ export const MetersSection = observer(function MetersSection() {
       <Table className="meters-table">
         <TableMetersHeader />
         <TableBody>
-          {metersStore.data &&
+          {metersStore.loading === 'loading' ? (
+            <Skeleton height={66} count={13} />
+          ) : (
             metersStore.data.map((meter, index) => {
+              const address = addressesMap.get(meter.area.id);
+
               return (
-                <TableMetersItem
-                  key={meter.id}
-                  as="li"
-                  index={index + 1}
-                  meter={meter}
-                />
+                address && (
+                  <TableMetersItem
+                    key={meter.id}
+                    as="li"
+                    index={index + 1}
+                    meter={meter}
+                    address={address}
+                  />
+                )
               );
-            })}
+            })
+          )}
         </TableBody>
         <TableFooter>
-          <Pagination />
+          {metersStore.loading === 'loading' ? (
+            <Skeleton
+              count={40}
+              containerClassName="skeleton"
+              className="skeleton__item"
+            />
+          ) : (
+            <Pagination onPageClick={handlerButtonPagination} />
+          )}
         </TableFooter>
       </Table>
     </MetersSectionStyles>
