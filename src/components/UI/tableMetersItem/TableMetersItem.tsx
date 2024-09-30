@@ -5,7 +5,7 @@ import { AddressModelInstance } from '../../../store/AddressesStore';
 import { MeterModelInstance } from '../../../store/MetersStore';
 import { parseAddressIds } from '../../../utils/parseAddressIds';
 import { DeleteButton } from '../deleteButton/DeleteButton';
-import { DropIcon } from '../drop-icon/DropIcon';
+import { DropIcon } from '../dropIcon/DropIcon';
 import { TableCell } from '../table/TableCell';
 import { TableMetersItemStyles } from './TableMetersItem.styles';
 

@@ -1,5 +1,5 @@
 import { DetailedHTMLProps } from 'react';
-import { TrashIcon } from '../trash-icon/TrashIcon';
+import { TrashIcon } from '../trashIcon/TrashIcon';
 import { DeleteButtonStyles } from './DeleteButton.styles';
 
 type DeleteButtonProps = {

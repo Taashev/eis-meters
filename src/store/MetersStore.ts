@@ -2,7 +2,7 @@ import { cast, flow, Instance, types } from 'mobx-state-tree';
 import { MeterItemResponseType, MetersApiResponseType } from '../types/meter';
 import { apiDeleteMeters, apiGetMeters } from '../utils/api';
 import { LIMIT } from '../utils/constants';
-import { serializeMeter } from '../utils/serialize-meter';
+import { serializeMeter } from '../utils/serializeMeter';
 
 export type MeterModelInstance = Instance<typeof MeterModel>;
 

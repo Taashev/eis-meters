@@ -1,11 +1,11 @@
 import { observer } from 'mobx-react-lite';
 import Skeleton from 'react-loading-skeleton';
 import { useSearchParams } from 'react-router-dom';
-import { TableMetersHeader } from '../../../components/UI/table-meters-header/TableMetersHeader';
+import { TableMetersHeader } from '../../UI/tableMetersHeader/TableMetersHeader';
 import { Title } from '../../../components/UI/title/Title';
 import { useStore } from '../../../hooks/useStore';
 import { Pagination } from '../../UI/pagination/Pagination';
-import { TableMetersItem } from '../../UI/table-meters-item/TableMetersItem';
+import { TableMetersItem } from '../../UI/tableMetersItem/TableMetersItem';
 import { Table } from '../../UI/table/Table';
 import { TableBody } from '../../UI/table/TableBody';
 import { TableFooter } from '../../UI/table/TableFooter';

@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useStore } from '../../../hooks/useStore';
-import { PaginationItem } from '../pagination-item/PaginationItem';
+import { PaginationItem } from '../paginationItem/PaginationItem';
 import { PaginationListStyles } from './Pagination.styles';
 
 type PaginationProps = {

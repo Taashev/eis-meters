@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from '../../components/global-style/GlobalStyle';
+import { GlobalStyle } from '../../components/globalStyle/GlobalStyle';
 import { theme } from '../../theme/theme';
-import { MetersPage } from '../meters-page/MetersPage';
-import { NotFoundPage } from '../not-found-page/NotFoundPage';
+import { MetersPage } from '../metersPage/MetersPage';
+import { NotFoundPage } from '../notFoundPage/NotFoundPage';
 import { AppStyles } from './App.styles';
 
 function App() {

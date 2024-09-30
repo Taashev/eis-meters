@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TableMetersItemTemplateStyles } from '../table-meters-item/TableMetersItem.styles';
+import { TableMetersItemTemplateStyles } from '../tableMetersItem/TableMetersItem.styles';
 
 export const TableMetersHeaderStyles = styled(TableMetersItemTemplateStyles)`
   padding: 0 ${({ theme }) => `calc(${theme.unit.unitX1} * .5)`};
