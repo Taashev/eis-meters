@@ -17,7 +17,10 @@ const TableFooterStyles = styled.footer`
 
   .skeleton {
     display: flex;
+
     gap: 5px;
+
+    overflow: hidden;
   }
 
   .skeleton__item {
